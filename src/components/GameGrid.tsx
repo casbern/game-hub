@@ -15,12 +15,11 @@ interface Props {
 export const GameGrid = ({ gameQuery }: Props ) => {
   const { data, error, loading } = useGames(gameQuery)
   const skeletons = [1, 2, 3, 4, 5, 6]
+
+  if(error) return <Text>{error}</Text>
   
   return (
-    <>
-    {
-      error && <Text>{error}</Text>
-    }
+    
     <SimpleGrid columns={ {sm: 1, md: 2, xl: 3, "2xl": 4} } paddingLeft={10} spacing={6} >
       
       {
@@ -40,6 +39,6 @@ export const GameGrid = ({ gameQuery }: Props ) => {
         ))
       }
     </SimpleGrid>
-    </>
+    
   )
 }
